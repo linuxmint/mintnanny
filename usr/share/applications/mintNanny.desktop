@@ -1,6 +1,7 @@
 [Desktop Entry]
-Name=mintNanny
-Comment=Domain Blocker
+Name=Domain Blocker
+GenericName=Parental Control
+Comment=Block access to selected domain names
 Exec=mintnanny
 Icon=/usr/lib/linuxmint/mintNanny/icon.svg
 Terminal=false

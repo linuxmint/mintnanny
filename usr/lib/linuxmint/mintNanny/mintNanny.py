@@ -29,15 +29,20 @@ except Exception, detail:
 # i18n
 gettext.install("messages", "/usr/lib/linuxmint/mintNanny/locale")
 
+# i18n for menu item
+menuName = _("Domain Blocker")
+menuGenericName = _("Parental Control")
+menuComment = _("Block access to selected domain names")
+
 def open_about(widget):
 	dlg = gtk.AboutDialog()
 	dlg.set_title(_("About") + " - mintNanny")
-	version = commands.getoutput("mint-apt-version mintnanny")
+	version = commands.getoutput("/usr/lib/linuxmint/mintNanny/version.py")
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
-	dlg.set_comments(_("Domain blocker for Linux Mint"))
+	dlg.set_comments(_("Domain blocker"))
         try:
-            h = open('/usr/lib/linuxmint/mintSystem/GPL.txt','r')
+            h = open('/usr/share/common-licenses/GPL','r')
             s = h.readlines()
 	    gpl = ""
             for line in s:
@@ -47,8 +52,8 @@ def open_about(widget):
         except Exception, detail:
             print detail        
         dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
-	dlg.set_icon_from_file("/usr/lib/linuxmint/mintSystem/icon.png")
-	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintSystem/icon.png"))
+	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
+	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
         def close(w, res):
             if res == gtk.RESPONSE_CANCEL:
                 w.hide()
@@ -56,7 +61,7 @@ def open_about(widget):
         dlg.show()
 
 def add_domain(widget, treeview_domains):
-	name = commands.getoutput("zenity --entry --text=\"" + _("Domain name:") + "\" --title=mintNanny --window-icon=/usr/lib/linuxmint/mintSystem/icon.png")
+	name = commands.getoutput("zenity --entry --text=\"" + _("Domain name:") + "\" --title=mintNanny --window-icon=/usr/lib/linuxmint/mintNanny/icon.svg")
 	domain = name.strip()
 	if domain != '':
 		model = treeview_domains.get_model()
@@ -81,10 +86,10 @@ if not os.path.exists("/etc/hosts.mintNanny.backup"):
 #Set the Glade file
 gladefile = "/usr/lib/linuxmint/mintNanny/mintNanny.glade"
 wTree = gtk.glade.XML(gladefile, "window1")
-wTree.get_widget("window1").set_title(_("mintNanny"))
+wTree.get_widget("window1").set_title(_("Domain Blocker"))
 vbox = wTree.get_widget("vbox_main")
 treeview_domains = wTree.get_widget("treeview_domains")
-wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintSystem/icon.png")
+wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 
 # the treeview 
 column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)

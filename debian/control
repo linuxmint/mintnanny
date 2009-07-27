@@ -7,7 +7,7 @@ Standards-Version: 3.7.2
 
 Package: mintnanny
 Architecture: all
-Depends: python (>= 2.4), python (<< 3), python-gtk2, python-glade2, zenity, mintsystem
+Depends: python (>= 2.4), python (<< 3), python-gtk2, python-glade2, zenity
 Conflicts: mintnanny-gnome, mintnanny-kde
 Replaces: mintnanny-gnome, mintnanny-kde
 Description: Domain blocker for Linux Mint
