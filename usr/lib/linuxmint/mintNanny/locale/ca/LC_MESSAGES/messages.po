@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Fitxer"
+
+msgid "_Help"
+msgstr "_Ajuda"
+
+msgid "About"
+msgstr "Quant a"
+
+msgid "Close"
+msgstr "Tancar"
+
+msgid "Blocked domains"
+msgstr "Dominis bloquejats"
+
+msgid "Domain name:"
+msgstr "Nom del domini:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Bloquejador de dominis per a Linux Mint"

@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_ملف"
+
+msgid "_Help"
+msgstr "_مساعدة"
+
+msgid "About"
+msgstr "عن"
+
+msgid "Close"
+msgstr "إغلاق"
+
+msgid "Blocked domains"
+msgstr "النطاقات المحظورة"
+
+msgid "Domain name:"
+msgstr "اسم النظاق:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "برنامج حضر النطاقات للينكس منت"

@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Soubor"
+
+msgid "_Help"
+msgstr "_Nápověda"
+
+msgid "About"
+msgstr "O programu"
+
+msgid "Close"
+msgstr "Zavřít"
+
+msgid "Blocked domains"
+msgstr "Blokované domény"
+
+msgid "Domain name:"
+msgstr "Název domény:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Blokování domén pro Linux Mint"

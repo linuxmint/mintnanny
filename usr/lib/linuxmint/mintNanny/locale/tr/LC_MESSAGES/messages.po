@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Dosya"
+
+msgid "_Help"
+msgstr "_Yardım"
+
+msgid "About"
+msgstr "Hakkında"
+
+msgid "Close"
+msgstr "Kapat"
+
+msgid "Blocked domains"
+msgstr "Engellenen alan adları"
+
+msgid "Domain name:"
+msgstr "Alan Adı:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Linux Mint için alan adı engelleyici"

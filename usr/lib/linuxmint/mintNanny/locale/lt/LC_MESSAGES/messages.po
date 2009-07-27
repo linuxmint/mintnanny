@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Rinkmena"
+
+msgid "_Help"
+msgstr "_Pagalba"
+
+msgid "About"
+msgstr "Informacija"
+
+msgid "Close"
+msgstr "Uždaryti"
+
+msgid "Blocked domains"
+msgstr "Uždrausti adresai"
+
+msgid "Domain name:"
+msgstr "Adresas:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Linux Mint adresų blokiklis"

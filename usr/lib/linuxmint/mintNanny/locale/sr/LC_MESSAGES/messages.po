@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Датотека"
+
+msgid "_Help"
+msgstr "_Помоћ"
+
+msgid "About"
+msgstr "О програму"
+
+msgid "Close"
+msgstr "Затвори"
+
+msgid "Blocked domains"
+msgstr "Блокирани домени"
+
+msgid "Domain name:"
+msgstr "Име домена:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Блокер домена за Linux Mint"

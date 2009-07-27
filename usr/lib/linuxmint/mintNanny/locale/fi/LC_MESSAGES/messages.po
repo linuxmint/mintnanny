@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Tiedosto"
+
+msgid "_Help"
+msgstr "_Ohje"
+
+msgid "About"
+msgstr "Tietoja"
+
+msgid "Close"
+msgstr "Sulje"
+
+msgid "Blocked domains"
+msgstr "Torjutut verkkotunnukset"
+
+msgid "Domain name:"
+msgstr "Verkkotunnus:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Linux Mintin verkkotunnusten torjuja"

@@ -1,0 +1,43 @@
+mintnanny (1.3.3) gloria; urgency=low
+
+  * Bug fix: No label under toolbar icons (https://bugs.launchpad.net/bugs/399705)
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu,  16 Jul 2009 12:34:00 +0000
+
+mintnanny (1.3.2) gloria; urgency=low
+
+  * Updated translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Tue,  19 May 2009 19:01:00 +0000
+
+mintnanny (1.3.1) gloria; urgency=low
+
+  * Added translations
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun,  17 May 2009 21:43:00 +0000
+
+mintnanny (1.3) gloria; urgency=low
+
+  * Conflicts/Replaces mintnanny-gnome, mintnanny-kde
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  29 Apr 2009 10:33:00 +0000
+
+mintnanny (1.2) gloria; urgency=low
+
+  * Added /usr/bin/mintnanny
+  * Added version in about dialog
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed,  22 Apr 2009 17:50:00 +0000
+
+mintnanny (1.0.1) felicia; urgency=low
+
+  * Added new translations
+
+ -- clem <root@linuxmint.com>  Fri,  5 Dec 2008 19:35:00 +0000
+
+mintnanny (1.0) elyssa; urgency=low
+
+  * Initial release
+
+ -- clem <root@linuxmint.com>  Sat,  5 Oct 2008 19:34:00 +0000
+

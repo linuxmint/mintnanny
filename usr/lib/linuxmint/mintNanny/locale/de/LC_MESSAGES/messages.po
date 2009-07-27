@@ -1,0 +1,20 @@
+msgid "_File"
+msgstr "_Datei"
+
+msgid "_Help"
+msgstr "_Hilfe"
+
+msgid "About"
+msgstr "Über"
+
+msgid "Close"
+msgstr "Schließen"
+
+msgid "Blocked domains"
+msgstr "Gesperrte Domäne"
+
+msgid "Domain name:"
+msgstr "Domänenname:"
+
+msgid "Domain blocker for Linux Mint"
+msgstr "Domänenblocker für Linux Mint"
