@@ -37,7 +37,7 @@ menuComment = _("Block access to selected domain names")
 def open_about(widget):
 	dlg = gtk.AboutDialog()
 	dlg.set_title(_("About") + " - mintNanny")
-	version = commands.getoutput("/usr/lib/linuxmint/mintNanny/version.py")
+	version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintnanny")
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
