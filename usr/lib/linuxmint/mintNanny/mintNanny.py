@@ -27,7 +27,7 @@ except Exception, detail:
 	pass
 
 # i18n
-gettext.install("messages", "/usr/lib/linuxmint/mintNanny/locale")
+gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 
 # i18n for menu item
 menuName = _("Domain Blocker")
