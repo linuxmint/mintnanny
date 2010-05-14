@@ -1,3 +1,9 @@
+mintnanny (1.3.7) helena; urgency=low
+
+  * Updated desktop file
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri,  14 May 2010 10:30:00 +0000
+
 mintnanny (1.3.6) helena; urgency=low
 
   * Changed translation framework
