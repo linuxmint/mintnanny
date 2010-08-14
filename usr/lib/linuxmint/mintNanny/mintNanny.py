@@ -61,7 +61,7 @@ def open_about(widget):
         dlg.show()
 
 def add_domain(widget, treeview_domains):
-	name = commands.getoutput("zenity --entry --text=\"" + _("Domain name:") + "\" --title=mintNanny --window-icon=/usr/lib/linuxmint/mintNanny/icon.svg")
+	name = commands.getoutput("zenity --entry --text=\"" + _("Domain name:") + "\" --title=mintNanny --window-icon=/usr/lib/linuxmint/mintNanny/icon.svg 2> /dev/null")
 	domain = name.strip()
 	if domain != '':
 		model = treeview_domains.get_model()

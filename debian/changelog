@@ -1,3 +1,9 @@
+mintnanny (1.3.8) helena; urgency=low
+
+  * Bug fix: redirecting warning/errors to /dev/null when using zenity
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat,  14 Aug 2010 14:49:00 +0000
+
 mintnanny (1.3.7) helena; urgency=low
 
   * Updated desktop file
