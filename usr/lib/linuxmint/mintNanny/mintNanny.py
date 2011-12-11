@@ -115,6 +115,7 @@ uiBuilder.get_object("toolbutton_add").connect("clicked", add_domain, treeview_d
 uiBuilder.get_object("toolbutton_remove").connect("clicked", remove_domain, treeview_domains)
 
 fileMenu = gtk.MenuItem(_("_File"))
+fileMenu.set_use_underline(True)
 fileSubmenu = gtk.Menu()
 fileMenu.set_submenu(fileSubmenu)
 closeMenuItem = gtk.ImageMenuItem(gtk.STOCK_CLOSE)
@@ -123,6 +124,7 @@ closeMenuItem.connect("activate", gtk.main_quit)
 fileSubmenu.append(closeMenuItem)
 
 helpMenu = gtk.MenuItem(_("_Help"))
+helpMenu.set_use_underline(True)
 helpSubmenu = gtk.Menu()
 helpMenu.set_submenu(helpSubmenu)
 aboutMenuItem = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
