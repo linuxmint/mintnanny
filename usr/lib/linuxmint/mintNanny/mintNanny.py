@@ -53,8 +53,8 @@ def open_about(widget):
 	dlg.connect("response", close)
 	dlg.show()
 
-def add_domain(widget, treeview_domains):
-	name = commands.getoutput("zenity --entry --text=\"" + _("Domain name:") + "\" --title=mintNanny --window-icon=/usr/lib/linuxmint/mintNanny/icon.svg 2> /dev/null")
+def add_domain(widget, treeview_domains):	
+	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
 	domain = name.strip()
 	if domain != '':
 		model = treeview_domains.get_model()
