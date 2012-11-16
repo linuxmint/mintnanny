@@ -12,11 +12,18 @@ try:
 	import os
 	import commands
 	import sys
-	from gi.repository import Gtk as gtk
-	from gi.repository import GdkPixbuf
+	import gtk
+    	import gtk.glade
 	import gettext
 except Exception, detail:
 	print detail
+	pass
+
+try:
+	import pygtk
+	pygtk.require("2.0")
+except Exception, detail:
+	print detail	
 	pass
 
 # i18n
@@ -34,24 +41,24 @@ def open_about(widget):
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
-	try:
-		h = open('/usr/share/common-licenses/GPL','r')
-		s = h.readlines()
-		gpl = ""
-		for line in s:
-			gpl += line
-		h.close()
-		dlg.set_license(gpl)
-	except Exception, detail:
-		print detail        
-	dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
+        try:
+            h = open('/usr/share/common-licenses/GPL','r')
+            s = h.readlines()
+	    gpl = ""
+            for line in s:
+               gpl += line
+            h.close()
+            dlg.set_license(gpl)
+        except Exception, detail:
+            print detail        
+        dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
 	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
-	dlg.set_logo(GdkPixbuf.Pixbuf.new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
-	def close(w, res):
-		if res == gtk.ResponseType.CANCEL:
-			w.hide()
-	dlg.connect("response", close)
-	dlg.show()
+	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
+        def close(w, res):
+            if res == gtk.RESPONSE_CANCEL:
+                w.hide()
+        dlg.connect("response", close)
+        dlg.show()
 
 def add_domain(widget, treeview_domains):	
 	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
@@ -77,13 +84,12 @@ if not os.path.exists("/etc/hosts.mintNanny.backup"):
 	os.system("cp /etc/hosts /etc/hosts.mintNanny.backup")
 
 #Set the Glade file
-uifile = "/usr/lib/linuxmint/mintNanny/mintNanny.ui"
-uiBuilder = gtk.Builder()
-uiBuilder.add_from_file(uifile)
-uiBuilder.get_object("window1").set_title(_("Domain Blocker"))
-vbox = uiBuilder.get_object("vbox_main")
-treeview_domains = uiBuilder.get_object("treeview_domains")
-uiBuilder.get_object("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
+gladefile = "/usr/lib/linuxmint/mintNanny/mintNanny.glade"
+wTree = gtk.glade.XML(gladefile, "window1")
+wTree.get_widget("window1").set_title(_("Domain Blocker"))
+vbox = wTree.get_widget("vbox_main")
+treeview_domains = wTree.get_widget("treeview_domains")
+wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 
 # the treeview 
 column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)
@@ -95,7 +101,7 @@ treeview_domains.set_reorderable(False)
 treeview_domains.show()
 
 model = gtk.TreeStore(str)
-model.set_sort_column_id( 0, gtk.SortType.ASCENDING )
+model.set_sort_column_id( 0, gtk.SORT_ASCENDING )
 treeview_domains.set_model(model)
 
 #Get the list of allowed domains
@@ -109,10 +115,10 @@ for line in hostsFile:
 		model.set_value(iter, 0, domain)		
 del model
 
-uiBuilder.get_object("window1").connect("delete_event", gtk.main_quit)
-uiBuilder.get_object("button_close").connect("clicked", gtk.main_quit)
-uiBuilder.get_object("toolbutton_add").connect("clicked", add_domain, treeview_domains)
-uiBuilder.get_object("toolbutton_remove").connect("clicked", remove_domain, treeview_domains)
+wTree.get_widget("window1").connect("delete_event", gtk.main_quit)
+wTree.get_widget("button_close").connect("clicked", gtk.main_quit)
+wTree.get_widget("toolbutton_add").connect("clicked", add_domain, treeview_domains)
+wTree.get_widget("toolbutton_remove").connect("clicked", remove_domain, treeview_domains)
 
 fileMenu = gtk.MenuItem(_("_File"))
 fileMenu.set_use_underline(True)
@@ -132,10 +138,10 @@ aboutMenuItem.get_child().set_text(_("About"))
 aboutMenuItem.connect("activate", open_about)
 helpSubmenu.append(aboutMenuItem)
 
-uiBuilder.get_object("menubar1").append(fileMenu)
-uiBuilder.get_object("menubar1").append(helpMenu)	
+wTree.get_widget("menubar1").append(fileMenu)
+wTree.get_widget("menubar1").append(helpMenu)	
 
-uiBuilder.get_object("window1").show_all()	
+wTree.get_widget("window1").show_all()	
 
 gtk.main()
 

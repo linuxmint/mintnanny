@@ -1,7 +1,0 @@
-Note about Gtk3 : 
-
-In order to load interface glade interface, gtk.glade cannot be used anymore, it must be replace with a Gtk.Builder.
-For this to work, the .glade file needs to be converted to a .ui file.
-This can be done using :
-
-   gtk-builder-convert filename.glade filename.ui
