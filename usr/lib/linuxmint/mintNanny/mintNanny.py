@@ -67,7 +67,7 @@ def add_domain(widget, treeview_domains):
 		model = treeview_domains.get_model()
 		iter = model.insert_before(None, None)
 		model.set_value(iter, 0, domain)
-		domain = "0.0.0.0	" + domain + "	# blocked by mintNanny"
+		domain = "127.0.0.1	" + domain + "	# blocked by mintNanny"
 		os.system("echo \"" + domain + "\" >> /etc/hosts")			
 
 def remove_domain(widget, treeview_domains):
@@ -108,7 +108,7 @@ treeview_domains.set_model(model)
 hostsFile = open("/etc/hosts")
 for line in hostsFile:
 	line = str.strip(line)
-	if line.find('0.0.0.0') > -1:
+	if line.find('0.0.0.0') > -1 or line.find('blocked by mintNanny') > -1:
 		elements = line.split("\t")
 		domain = elements[1]
 		iter = model.insert_before(None, None)
