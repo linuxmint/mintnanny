@@ -1,3 +1,10 @@
+mintnanny (1.4.2) petra; urgency=low
+
+  * Changed icon
+  * Switch from 0.0.0.0 to 127.0.0.1
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sat, 19 Oct 2013 20:39:03 +0100
+
 mintnanny (1.4.1) olivia; urgency=low
 
   * Revert back to GTK2
