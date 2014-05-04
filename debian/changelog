@@ -1,3 +1,9 @@
+mintnanny (1.4.4) qiana; urgency=medium
+
+  * Updated desktop file
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 04 May 2014 14:25:30 +0100
+
 mintnanny (1.4.3) petra; urgency=low
 
   * Fix desktop file
