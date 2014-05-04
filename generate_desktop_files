@@ -1,59 +1,24 @@
 #!/usr/bin/python
 
-import commands, os
+DOMAIN = "mintnanny"
+PATH = "/usr/share/linuxmint/locale"
 
-sourceFile = "usr/lib/linuxmint/mintNanny/mintNanny.py"
+import os, gettext, sys
+sys.path.append('/usr/lib/linuxmint/common')
+import additionalfiles
 
-menuName = commands.getoutput("cat " + sourceFile + " | grep menuName")
-menuName = menuName.replace("menuName", "")
-menuName = menuName.replace("=", "")
-menuName = menuName.replace("_(", "")
-menuName = menuName.replace("\"", "")
-menuName = menuName.replace(")", "")
-menuName = menuName.strip()
+os.environ['LANG'] = "en_US.UTF-8"
+gettext.install(DOMAIN, PATH)
 
-menuComment = commands.getoutput("cat " + sourceFile + " | grep menuComment")
-menuComment = menuComment.replace("menuComment", "")
-menuComment = menuComment.replace("=", "")
-menuComment = menuComment.replace("_(", "")
-menuComment = menuComment.replace("\"", "")
-menuComment = menuComment.replace(")", "")
-menuComment = menuComment.strip()
+prefix = "[Desktop Entry]\n"
 
-desktopFile = open("usr/share/applications/mintNanny.desktop", "w")
-desktopFile.writelines("""[Desktop Entry]
-Name=Domain Blocker
-""")
-
-import gettext
-gettext.install("mintnanny", "/usr/share/linuxmint/locale")
-
-for directory in os.listdir("/usr/share/linuxmint/locale"):
-	if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
-		try:
-			language = gettext.translation('mintnanny', "/usr/share/linuxmint/locale", languages=[directory])
-			language.install()
-			desktopFile.writelines("Name[%s]=%s\n" % (directory, _(menuName)))
-		except:
-			pass
-
-desktopFile.writelines("Comment=Block access to selected domain names\n")
-
-for directory in os.listdir("/usr/share/linuxmint/locale"):
-	if os.path.isdir(os.path.join("/usr/share/linuxmint/locale", directory)):
-		try:
-			language = gettext.translation('mintnanny', "/usr/share/linuxmint/locale", languages=[directory])
-			language.install()			
-			desktopFile.writelines("Comment[%s]=%s\n" % (directory, _(menuComment)))
-		except:
-			pass
-
-desktopFile.writelines("""Exec=mintnanny
+suffix = """Exec=mintnanny
 Icon=/usr/lib/linuxmint/mintNanny/icon.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
 Categories=Application;System;Settings;
 StartupNotify=false
-""")
+"""
 
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintNanny.desktop", prefix, _("Domain Blocker"), _("Block access to selected domain names"), suffix, genericName=_("Parental Control"))

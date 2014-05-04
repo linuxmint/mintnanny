@@ -29,11 +29,6 @@ except Exception, detail:
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 
-# i18n for menu item
-menuName = _("Domain Blocker")
-menuGenericName = _("Parental Control")
-menuComment = _("Block access to selected domain names")
-
 def open_about(widget):
 	dlg = gtk.AboutDialog()
 	dlg.set_title(_("About") + " - mintNanny")
