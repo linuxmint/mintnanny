@@ -1,3 +1,10 @@
+mintnanny (1.4.6) qiana; urgency=low
+
+  * [44225ab] Add trailing semicolon
+  * [22bbc84] Update translations
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Mon, 26 May 2014 13:39:46 +0200
+
 mintnanny (1.4.5) qiana; urgency=low
 
   * [91a3a41] KDE desktop file generation
