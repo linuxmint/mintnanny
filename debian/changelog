@@ -1,3 +1,11 @@
+mintnanny (1.4.5) qiana; urgency=low
+
+  * [91a3a41] KDE desktop file generation
+  * [16335c3] GNOME based desktop file hidden in KDE
+  * [a2533f8] New KDE4 desktop file
+
+ -- Frédéric Gaudet <fred@linuxmint.com>  Mon, 26 May 2014 11:42:07 +0200
+
 mintnanny (1.4.4) qiana; urgency=medium
 
   * Updated desktop file
