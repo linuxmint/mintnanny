@@ -1,5 +1,5 @@
-#!/bin/bash
+#!/bin/sh
 
-sudo rm -rf /usr/lib/linuxmint/mintNanny
+sudo rm -rf /usr/share/linuxmint/mintNanny
 sudo cp -R usr /
 mintnanny

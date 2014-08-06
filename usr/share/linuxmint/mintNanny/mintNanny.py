@@ -32,7 +32,7 @@ gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 def open_about(widget):
 	dlg = gtk.AboutDialog()
 	dlg.set_title(_("About") + " - mintNanny")
-	version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintnanny")
+	version = commands.getoutput("/usr/share/linuxmint/common/version.py mintnanny")
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
@@ -47,8 +47,8 @@ def open_about(widget):
         except Exception, detail:
             print detail        
         dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
-	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
-	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
+	dlg.set_icon_from_file("/usr/share/linuxmint/mintNanny/icon.svg")
+	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/share/linuxmint/mintNanny/icon.svg"))
         def close(w, res):
             if res == gtk.RESPONSE_CANCEL:
                 w.hide()
@@ -56,7 +56,7 @@ def open_about(widget):
         dlg.show()
 
 def add_domain(widget, treeview_domains):	
-	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
+	name = commands.getoutput("/usr/share/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
 	domain = name.strip()
 	if domain != '':
 		model = treeview_domains.get_model()
@@ -79,12 +79,12 @@ if not os.path.exists("/etc/hosts.mintNanny.backup"):
 	os.system("cp /etc/hosts /etc/hosts.mintNanny.backup")
 
 #Set the Glade file
-gladefile = "/usr/lib/linuxmint/mintNanny/mintNanny.glade"
+gladefile = "/usr/share/linuxmint/mintNanny/mintNanny.glade"
 wTree = gtk.glade.XML(gladefile, "window1")
 wTree.get_widget("window1").set_title(_("Domain Blocker"))
 vbox = wTree.get_widget("vbox_main")
 treeview_domains = wTree.get_widget("treeview_domains")
-wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
+wTree.get_widget("window1").set_icon_from_file("/usr/share/linuxmint/mintNanny/icon.svg")
 
 # the treeview 
 column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)

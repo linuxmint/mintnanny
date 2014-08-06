@@ -1,9 +1,9 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 import os
 import commands
 
-launcher = commands.getoutput("/usr/lib/linuxmint/common/mint-which-launcher.py")
-os.system("%s /usr/lib/linuxmint/mintNanny/mintNanny.py" % launcher)
+launcher = commands.getoutput("/usr/share/linuxmint/common/mint-which-launcher.py")
+os.system("%s /usr/share/linuxmint/mintNanny/mintNanny.py" % launcher)
 
 
