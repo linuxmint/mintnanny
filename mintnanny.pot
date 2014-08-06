@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-04 14:24+0100\n"
+"POT-Creation-Date: 2014-08-06 04:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,48 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:34
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:130
+#: usr/share/linuxmint/mintNanny/mintNanny.py:34
+#: usr/share/linuxmint/mintNanny/mintNanny.py:130
 msgid "About"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:38
+#: usr/share/linuxmint/mintNanny/mintNanny.py:38
 msgid "Domain blocker"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:59
+#: usr/share/linuxmint/mintNanny/mintNanny.py:59
 msgid "Please type the domain name you want to block"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:59
+#: usr/share/linuxmint/mintNanny/mintNanny.py:59
 msgid "Domain name:"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:84 generate_desktop_files:24
+#: usr/share/linuxmint/mintNanny/mintNanny.py:84 generate_desktop_files:25
+#: generate_desktop_files:39
 msgid "Domain Blocker"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:90
+#: usr/share/linuxmint/mintNanny/mintNanny.py:90
 msgid "Blocked domains"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:118
+#: usr/share/linuxmint/mintNanny/mintNanny.py:118
 msgid "_File"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:122
+#: usr/share/linuxmint/mintNanny/mintNanny.py:122
 msgid "Close"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:126
+#: usr/share/linuxmint/mintNanny/mintNanny.py:126
 msgid "_Help"
 msgstr ""
 
-#: generate_desktop_files:24
+#: generate_desktop_files:25 generate_desktop_files:39
 msgid "Block access to selected domain names"
 msgstr ""
 
-#: generate_desktop_files:24
+#: generate_desktop_files:39
 msgid "Parental Control"
 msgstr ""

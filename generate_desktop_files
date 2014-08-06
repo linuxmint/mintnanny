@@ -4,7 +4,7 @@ DOMAIN = "mintnanny"
 PATH = "/usr/share/linuxmint/locale"
 
 import os, gettext, sys
-sys.path.append('/usr/lib/linuxmint/common')
+sys.path.append('/usr/share/linuxmint/common')
 import additionalfiles
 
 os.environ['LANG'] = "en_US.UTF-8"
@@ -13,7 +13,7 @@ gettext.install(DOMAIN, PATH)
 prefix = "[Desktop Entry]\n"
 
 suffix = """Exec=mintnanny
-Icon=/usr/lib/linuxmint/mintNanny/icon.svg
+Icon=/usr/share/linuxmint/mintNanny/icon.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
@@ -27,7 +27,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintNanny.desktop
 prefix = "[Desktop Entry]\n"
 
 suffix= """Exec=mintnanny
-Icon=/usr/lib/linuxmint/mintNanny/icon.svg
+Icon=/usr/share/linuxmint/mintNanny/icon.svg
 Terminal=false
 Type=Application
 Encoding=UTF-8
