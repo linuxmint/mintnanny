@@ -1,3 +1,9 @@
+mintnanny (1.4.7) rebecca; urgency=medium
+
+  * Updated debian files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 17 Oct 2014 11:08:48 +0200
+
 mintnanny (1.4.6) qiana; urgency=low
 
   * [44225ab] Add trailing semicolon
