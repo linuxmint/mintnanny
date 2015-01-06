@@ -13,7 +13,7 @@ try:
 	import commands
 	import sys
 	import gtk
-    	import gtk.glade
+	import gtk.glade
 	import gettext
 except Exception, detail:
 	print detail
@@ -23,7 +23,7 @@ try:
 	import pygtk
 	pygtk.require("2.0")
 except Exception, detail:
-	print detail	
+	print detail
 	pass
 
 # i18n
@@ -36,26 +36,26 @@ def open_about(widget):
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
-        try:
-            h = open('/usr/share/common-licenses/GPL','r')
-            s = h.readlines()
-	    gpl = ""
-            for line in s:
-               gpl += line
-            h.close()
-            dlg.set_license(gpl)
-        except Exception, detail:
-            print detail        
-        dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
+	try:
+		h = open('/usr/share/common-licenses/GPL','r')
+		s = h.readlines()
+		gpl = ""
+		for line in s:
+			gpl += line
+		h.close()
+		dlg.set_license(gpl)
+	except Exception, detail:
+		print detail
+	dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"])
 	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
-        def close(w, res):
-            if res == gtk.RESPONSE_CANCEL:
-                w.hide()
-        dlg.connect("response", close)
-        dlg.show()
+	def close(w, res):
+		if res == gtk.RESPONSE_CANCEL:
+			w.hide()
+	dlg.connect("response", close)
+	dlg.show()
 
-def add_domain(widget, treeview_domains):	
+def add_domain(widget, treeview_domains):
 	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
 	domain = name.strip()
 	if domain != '':
@@ -63,7 +63,7 @@ def add_domain(widget, treeview_domains):
 		iter = model.insert_before(None, None)
 		model.set_value(iter, 0, domain)
 		domain = "127.0.0.1	" + domain + "	# blocked by mintNanny"
-		os.system("echo \"" + domain + "\" >> /etc/hosts")			
+		os.system("echo \"" + domain + "\" >> /etc/hosts")
 
 def remove_domain(widget, treeview_domains):
 	selection = treeview_domains.get_selection()
@@ -86,7 +86,7 @@ vbox = wTree.get_widget("vbox_main")
 treeview_domains = wTree.get_widget("treeview_domains")
 wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 
-# the treeview 
+# the treeview
 column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)
 column1.set_sort_column_id(0)
 column1.set_resizable(True)
@@ -107,7 +107,7 @@ for line in hostsFile:
 		elements = line.split("\t")
 		domain = elements[1]
 		iter = model.insert_before(None, None)
-		model.set_value(iter, 0, domain)		
+		model.set_value(iter, 0, domain)
 del model
 
 wTree.get_widget("window1").connect("delete_event", gtk.main_quit)
@@ -132,9 +132,9 @@ aboutMenuItem.connect("activate", open_about)
 helpSubmenu.append(aboutMenuItem)
 
 wTree.get_widget("menubar1").append(fileMenu)
-wTree.get_widget("menubar1").append(helpMenu)	
+wTree.get_widget("menubar1").append(helpMenu)
 
-wTree.get_widget("window1").show_all()	
+wTree.get_widget("window1").show_all()
 
 gtk.main()
 
