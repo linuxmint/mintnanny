@@ -13,8 +13,9 @@ try:
 	import commands
 	import sys
 	import gtk
-    	import gtk.glade
+	import gtk.glade
 	import gettext
+	import re
 except Exception, detail:
 	print detail
 	pass
@@ -23,7 +24,7 @@ try:
 	import pygtk
 	pygtk.require("2.0")
 except Exception, detail:
-	print detail	
+	print detail
 	pass
 
 # i18n
@@ -36,34 +37,48 @@ def open_about(widget):
 	dlg.set_version(version)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
-        try:
-            h = open('/usr/share/common-licenses/GPL','r')
-            s = h.readlines()
-	    gpl = ""
-            for line in s:
-               gpl += line
-            h.close()
-            dlg.set_license(gpl)
-        except Exception, detail:
-            print detail        
-        dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"]) 
+	try:
+		h = open('/usr/share/common-licenses/GPL','r')
+		s = h.readlines()
+		gpl = ""
+		for line in s:
+			gpl += line
+		h.close()
+		dlg.set_license(gpl)
+	except Exception, detail:
+		print detail
+	dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"])
 	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
-        def close(w, res):
-            if res == gtk.RESPONSE_CANCEL:
-                w.hide()
-        dlg.connect("response", close)
-        dlg.show()
+	def close(w, res):
+		if res == gtk.RESPONSE_CANCEL:
+			w.hide()
+	dlg.connect("response", close)
+	dlg.show()
 
-def add_domain(widget, treeview_domains):	
+def add_domain(widget, treeview_domains):
 	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
 	domain = name.strip()
-	if domain != '':
-		model = treeview_domains.get_model()
-		iter = model.insert_before(None, None)
-		model.set_value(iter, 0, domain)
-		domain = "127.0.0.1	" + domain + "	# blocked by mintNanny"
-		os.system("echo \"" + domain + "\" >> /etc/hosts")			
+
+	if domain == '':
+		# Take no action on empty input
+		return
+
+	if not is_valid_domain(domain):
+		# User has passed an invalid domain (one that contains invalid characters)
+		# Display an error dialog to inform them why we're not adding it to the list
+		dlg = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format="Invalid Domain")
+		dlg.format_secondary_text("\"" + domain + "\" is an invalid domain name.\n\nDomain names must start and end with a letter or a digit, and can only contain the following:\n" + \
+		                          "\t- Letters A to Z (case-insensitive)\n\t- digits 0 to 9\n\t- hyphens (-)\n\t- dots (.)\n\nExample: my.number1domain.com")
+		dlg.run()
+		dlg.destroy()
+		return
+
+	model = treeview_domains.get_model()
+	iter = model.insert_before(None, None)
+	model.set_value(iter, 0, domain)
+	domain = "127.0.0.1	" + domain + "	# blocked by mintNanny"
+	os.system("echo \"" + domain + "\" >> /etc/hosts")
 
 def remove_domain(widget, treeview_domains):
 	selection = treeview_domains.get_selection()
@@ -73,6 +88,34 @@ def remove_domain(widget, treeview_domains):
 		os.system("sed '/" + domain + "/ d' /etc/hosts > /tmp/hosts.mintNanny")
 		os.system("mv /tmp/hosts.mintNanny /etc/hosts")
 		model.remove(iter)
+
+def is_valid_domain(domain):
+	#Quick sanity check
+	if domain == '':
+		return False
+
+	# The following is based on RFC 952 (https://tools.ietf.org/html/rfc952)
+	# and section 2.1 of RFC 1123 (https://tools.ietf.org/html/rfc1123#page-13)
+	# Also see sections 2.3.1 and 2.3.4 of RFC 1035 (http://tools.ietf.org/html/rfc1035)
+
+	# Quick regex match to check the domain name's sanity
+	# Note: This enforces that the domain name starts with a letter or a digit
+	# This does NOT enforce the label size limits (63 characters max in-between dots)
+	regex = re.compile('^[A-Za-z0-9][A-Za-z0-9\-\.]+$')
+	if not regex.match(domain):
+		return False
+
+	# A domain name MUST end with an alphanumeric character
+	# At this point we're certain that the string only contains alphanumeric characters or hyphens and dots.
+	# So we just need to check that it doesn't end with a hyphen or a dot
+	if domain.endswith('-') or domain.endswith('.'):
+		return False
+
+	# Domain names have a length limit of 255 characters
+	if len(domain) > 255:
+		return False
+
+	return True
 
 #If no backup of /etc/hosts was made, make one
 if not os.path.exists("/etc/hosts.mintNanny.backup"):
@@ -86,7 +129,7 @@ vbox = wTree.get_widget("vbox_main")
 treeview_domains = wTree.get_widget("treeview_domains")
 wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 
-# the treeview 
+# the treeview
 column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)
 column1.set_sort_column_id(0)
 column1.set_resizable(True)
@@ -107,7 +150,7 @@ for line in hostsFile:
 		elements = line.split("\t")
 		domain = elements[1]
 		iter = model.insert_before(None, None)
-		model.set_value(iter, 0, domain)		
+		model.set_value(iter, 0, domain)
 del model
 
 wTree.get_widget("window1").connect("delete_event", gtk.main_quit)
@@ -132,9 +175,9 @@ aboutMenuItem.connect("activate", open_about)
 helpSubmenu.append(aboutMenuItem)
 
 wTree.get_widget("menubar1").append(fileMenu)
-wTree.get_widget("menubar1").append(helpMenu)	
+wTree.get_widget("menubar1").append(helpMenu)
 
-wTree.get_widget("window1").show_all()	
+wTree.get_widget("window1").show_all()
 
 gtk.main()
 
