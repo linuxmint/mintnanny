@@ -1,3 +1,16 @@
+mintnanny (1.4.8) rosa; urgency=medium
+
+  [ Christophe Zeitouny ]
+  * Standardize indentation to tabs as that seemed to be what most lines are using. Consistency is what's most important here.
+  * Perform sanity checks on the given domain before trying to put it in /etc/hosts. I was able to ruin my hosts file by passing in quotes, double quotes, etc... Plus since the string is pasted as-is into a command that's executed with root privileges, this may have resulted in arbitrary execution of commands. The new code makes sure that the given domain name conforms to MOST restrictions on such names, and displays a helpful error message in case the given name is not well-formed
+
+  [ Clement Lefebvre ]
+  * l10n and simplify strings introduced in last PR
+  * Updated pot file
+  * Updated desktop files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 06 Nov 2015 17:31:09 +0000
+
 mintnanny (1.4.7) rebecca; urgency=medium
 
   * Updated debian files
