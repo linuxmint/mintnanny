@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-04 14:24+0100\n"
+"POT-Creation-Date: 2015-11-06 17:30+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,47 +17,67 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:34
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:130
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:35
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:175
 msgid "About"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:38
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:39
 msgid "Domain blocker"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:59
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:60
 msgid "Please type the domain name you want to block"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:59
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:60
 msgid "Domain name:"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:84 generate_desktop_files:24
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:70
+msgid "Invalid Domain"
+msgstr ""
+
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:71
+#, python-format
+msgid "'%s' is not a valid domain name."
+msgstr ""
+
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:72
+msgid ""
+"Domain names must start and end with a letter or a digit, and can only "
+"contain letters, digits, dots and hyphens."
+msgstr ""
+
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:73
+msgid "Example: my.number1domain.com"
+msgstr ""
+
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:129 generate_desktop_files:25
+#: generate_desktop_files:39
 msgid "Domain Blocker"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:90
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:135
 msgid "Blocked domains"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:118
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:163
 msgid "_File"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:122
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:167
 msgid "Close"
 msgstr ""
 
-#: usr/lib/linuxmint/mintNanny/mintNanny.py:126
+#: usr/lib/linuxmint/mintNanny/mintNanny.py:171
 msgid "_Help"
 msgstr ""
 
-#: generate_desktop_files:24
+#: generate_desktop_files:25 generate_desktop_files:39
 msgid "Block access to selected domain names"
 msgstr ""
 
-#: generate_desktop_files:24
+#: generate_desktop_files:39
 msgid "Parental Control"
 msgstr ""
