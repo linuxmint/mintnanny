@@ -67,9 +67,11 @@ def add_domain(widget, treeview_domains):
 	if not is_valid_domain(domain):
 		# User has passed an invalid domain (one that contains invalid characters)
 		# Display an error dialog to inform them why we're not adding it to the list
-		dlg = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format="Invalid Domain")
-		dlg.format_secondary_text("\"" + domain + "\" is an invalid domain name.\n\nDomain names must start and end with a letter or a digit, and can only contain the following:\n" + \
-		                          "\t- Letters A to Z (case-insensitive)\n\t- digits 0 to 9\n\t- hyphens (-)\n\t- dots (.)\n\nExample: my.number1domain.com")
+		dlg = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=_("Invalid Domain"))
+		desc1 = _("'%s' is not a valid domain name." % domain)
+		desc2 = _("Domain names must start and end with a letter or a digit, and can only contain letters, digits, dots and hyphens.")
+		desc3 = _("Example: my.number1domain.com")
+		dlg.format_secondary_text("%s\n\n%s\n\n%s" % (desc1, desc2, desc3))
 		dlg.run()
 		dlg.destroy()
 		return
