@@ -59,17 +59,17 @@ def open_about(widget):
 def add_domain(widget, treeview_domains):	
 	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
 	domain = name.strip()
-	domain = re.sub(r,'\s', '', domain)
+	domain = re.sub(r'\s', '', domain)
 	if domain[:4] == 'www.' :
 		domain = domain[4:]
 	if domain != '':
 		model = treeview_domains.get_model()
 		iter = model.insert_before(None, None)
 		model.set_value(iter, 0, domain)
-		domain = "127.0.0.1	" + domain + "	# blocked by mintNanny"
-		os.system("echo \"" + domain + "\" >> /etc/hosts")
-		domain = "127.0.0.1     www." + domain + "  # blocked by mintNanny"
-		os.system("echo \"" + domain + "\" >> /etc/hosts")
+		pushingstring = "127.0.0.1	" + domain + "	# blocked by mintNanny"
+		os.system("echo \"" + pushingstring + "\" >> /etc/hosts")
+		pushingstring = "127.0.0.1     www." + domain + "  # blocked by mintNanny"
+		os.system("echo \"" + pushingstring + "\" >> /etc/hosts")
 
 def remove_domain(widget, treeview_domains):
 	selection = treeview_domains.get_selection()
