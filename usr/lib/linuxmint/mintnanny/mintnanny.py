@@ -67,7 +67,9 @@ class MintNanny():
         dialogBox = dialogWindow.get_content_area()
         entry = Gtk.Entry()
         entry.set_activates_default(True)
-        dialogBox.pack_end(entry, False, False, 0)
+        box = Gtk.Box()
+        box.pack_start(entry, True, True, 12)
+        dialogBox.pack_start(box, True, True, 0)
         okButton = dialogWindow.get_widget_for_response(response_id=Gtk.ResponseType.OK)
         okButton.set_can_default(True)
         okButton.grab_default()
@@ -104,7 +106,7 @@ class MintNanny():
         prefixes = [""]
         if len(domain.split(".")) == 2:
             # domain in the form 'domainname.extension'
-            prefixes.append("www")
+            prefixes.append("www.")
         for prefix in prefixes:
             full_domain = "%s%s" % (prefix, domain)
             iter = self.model.insert_before(None, None)
