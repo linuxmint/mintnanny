@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 
 # MintNanny
 #	Clement Lefebvre <clem@linuxmint.com>
@@ -8,24 +8,14 @@
 # as published by the Free Software Foundation; Version 2
 # of the License.
 
-try:
-	import os
-	import commands
-	import sys
-	import gtk
-	import gtk.glade
-	import gettext
-	import re
-except Exception, detail:
-	print detail
-	pass
-
-try:
-	import pygtk
-	pygtk.require("2.0")
-except Exception, detail:
-	print detail
-	pass
+import os
+import sys
+import gtk
+import gtk.glade
+import gettext
+import re
+import pygtk
+import subprocess
 
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
@@ -33,8 +23,8 @@ gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 def open_about(widget):
 	dlg = gtk.AboutDialog()
 	dlg.set_title(_("About") + " - mintNanny")
-	version = commands.getoutput("/usr/lib/linuxmint/common/version.py mintnanny")
-	dlg.set_version(version)
+	output, error = subprocess.Popen(['/usr/lib/linuxmint/common/version.py', 'mintnanny'], stdout=subprocess.PIPE).communicate()
+	dlg.set_version(output)
 	dlg.set_program_name("mintNanny")
 	dlg.set_comments(_("Domain blocker"))
 	try:
@@ -46,7 +36,7 @@ def open_about(widget):
 		h.close()
 		dlg.set_license(gpl)
 	except Exception, detail:
-		print detail
+		print (detail)
 	dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"])
 	dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 	dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
@@ -57,8 +47,8 @@ def open_about(widget):
 	dlg.show()
 
 def add_domain(widget, treeview_domains):
-	name = commands.getoutput("/usr/lib/linuxmint/common/entrydialog.py '" + _("Please type the domain name you want to block") + "' '" + _("Domain name:") + "' '' 'mintNanny' 2> /dev/null")
-	domain = name.strip()
+	output, error = subprocess.Popen(['/usr/lib/linuxmint/common/entrydialog.py', _("Please type the domain name you want to block"), _("Domain name:"), '', 'mintNanny'], stdout=subprocess.PIPE).communicate()
+	domain = re.sub(r'\s', '', output)
 
 	if domain == '':
 		# Take no action on empty input
