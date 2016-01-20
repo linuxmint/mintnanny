@@ -13,6 +13,7 @@ import sys
 from gi.repository import Gtk, Gdk
 import gettext
 import re
+import fileinput
 
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
@@ -85,6 +86,8 @@ class MintNanny():
             # Take no action on empty input
             return
         domain = re.sub(r'\s', '', domain)
+        if domain.startswith('www.'):
+            domain = domain[4:]
         if not self.is_valid_domain(domain):
             # User has passed an invalid domain (one that contains invalid characters)
             # Display an error dialog to inform them why we're not adding it to the list
@@ -98,10 +101,11 @@ class MintNanny():
             dlg.destroy()
             return
 
-        iter = self.model.insert_before(None, None)
-        self.model.set_value(iter, 0, domain)
-        domain = "127.0.0.1 %s # blocked by mintNanny" % domain
-        os.system("echo \"%s\" >> /etc/hosts" % domain)
+        for prefix in ["", "www."]:
+            full_domain = "%s%s" % (prefix, domain)
+            iter = self.model.insert_before(None, None)
+            self.model.set_value(iter, 0, full_domain)
+            os.system("echo \"127.0.0.1 %s # blocked by mintNanny\" >> /etc/hosts" % full_domain)
 
     def on_domain_selected(self, selection):
         model, treeiter = selection.get_selected()
@@ -112,7 +116,15 @@ class MintNanny():
         (model, iter) = selection.get_selected()
         if (iter != None):
             domain = model.get_value(iter, 0)
-            os.system("sed -i -e '/%s/d' /etc/hosts" % domain)
+            for line_number, line in enumerate(fileinput.input('/etc/hosts', inplace=1)):
+                found = False
+                if '0.0.0.0' in line or 'blocked by mintNanny' in line:
+                    elements = line.split()
+                    if len(elements) > 1:
+                        if elements[1] == domain:
+                            found = True
+                if not found:
+                    sys.stdout.write(line)
             model.remove(iter)
 
     def is_valid_domain(self, domain):
