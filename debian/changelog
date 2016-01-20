@@ -1,3 +1,18 @@
+mintnanny (1.4.9) sarah; urgency=medium
+
+  * Get rid of the commands module
+  * Indentation: Convert tabs to spaces
+  * Migrated to GTK3
+  * Moved icon to /usr/share/pixmaps, moved ui file to /usr/share, decapitilized directories/files
+  * Replace mint-common's entrydialog with a GTK3 dialog
+  * Makepot
+  * Python3, use of class, multiple small fixes
+  * Adding domains: validate when pressing Enter
+  * Automatically add the www subdomain.
+  * Only add the www subdomain for domains with no subdomains
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 20 Jan 2016 19:00:44 +0000
+
 mintnanny (1.4.8) rosa; urgency=medium
 
   [ Christophe Zeitouny ]
