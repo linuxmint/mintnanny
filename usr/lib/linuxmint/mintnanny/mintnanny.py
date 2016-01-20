@@ -64,11 +64,15 @@ class MintNanny():
         dialogWindow = Gtk.MessageDialog(self.window, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Please type the domain name you want to block"))
         dialogWindow.set_title(_("Domain name"))
         dialogBox = dialogWindow.get_content_area()
-        userEntry = Gtk.Entry()
-        dialogBox.pack_end(userEntry, False, False, 0)
+        entry = Gtk.Entry()
+        entry.set_activates_default(True)
+        dialogBox.pack_end(entry, False, False, 0)
+        okButton = dialogWindow.get_widget_for_response(response_id=Gtk.ResponseType.OK)
+        okButton.set_can_default(True)
+        okButton.grab_default()
         dialogWindow.show_all()
         response = dialogWindow.run()
-        text = userEntry.get_text()
+        text = entry.get_text()
         dialogWindow.destroy()
         if (response == Gtk.ResponseType.OK) and (text != ''):
             return text
