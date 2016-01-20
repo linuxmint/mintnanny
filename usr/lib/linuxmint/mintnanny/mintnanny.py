@@ -18,14 +18,27 @@ import subprocess
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 
-def add_domain(widget, treeview_domains, window):
-    output, error = subprocess.Popen(['/usr/lib/linuxmint/common/entrydialog.py', _("Please type the domain name you want to block"), _("Domain name:"), '', 'mintNanny'], stdout=subprocess.PIPE).communicate()
-    domain = re.sub(r'\s', '', output)
+def ask_domain_name(window):
+    dialogWindow = Gtk.MessageDialog(window, Gtk.DialogFlags.MODAL | Gtk.DialogFlags.DESTROY_WITH_PARENT, Gtk.MessageType.QUESTION, Gtk.ButtonsType.OK_CANCEL, _("Please type the domain name you want to block"))
+    dialogWindow.set_title(_("Domain name"))
+    dialogBox = dialogWindow.get_content_area()
+    userEntry = Gtk.Entry()
+    dialogBox.pack_end(userEntry, False, False, 0)
+    dialogWindow.show_all()
+    response = dialogWindow.run()
+    text = userEntry.get_text()
+    dialogWindow.destroy()
+    if (response == Gtk.ResponseType.OK) and (text != ''):
+        return text
+    else:
+        return None
 
-    if domain == '':
+def add_domain(widget, treeview_domains, window):
+    domain = ask_domain_name(window)
+    if domain is None or domain == '':
         # Take no action on empty input
         return
-
+    domain = re.sub(r'\s', '', domain)
     if not is_valid_domain(domain):
         # User has passed an invalid domain (one that contains invalid characters)
         # Display an error dialog to inform them why we're not adding it to the list
