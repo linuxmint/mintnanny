@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 DOMAIN = "mintnanny"
 PATH = "/usr/share/linuxmint/locale"
@@ -13,7 +13,7 @@ gettext.install(DOMAIN, PATH)
 prefix = "[Desktop Entry]\n"
 
 suffix = """Exec=mintnanny
-Icon=/usr/lib/linuxmint/mintNanny/icon.svg
+Icon=mintnanny
 Terminal=false
 Type=Application
 Encoding=UTF-8
@@ -27,7 +27,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintNanny.desktop
 prefix = "[Desktop Entry]\n"
 
 suffix= """Exec=mintnanny
-Icon=/usr/lib/linuxmint/mintNanny/icon.svg
+Icon=mintnanny
 Terminal=false
 Type=Application
 Encoding=UTF-8

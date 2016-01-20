@@ -1,5 +1,4 @@
 #!/bin/bash
-
-sudo rm -rf /usr/lib/linuxmint/mintNanny
+sudo rm -rf /usr/lib/linuxmint/mintnanny
 sudo cp -R usr /
-mintnanny
+sudo mintnanny

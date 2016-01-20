@@ -4,6 +4,6 @@ import os
 import commands
 
 launcher = commands.getoutput("/usr/lib/linuxmint/common/mint-which-launcher.py")
-os.system("%s /usr/lib/linuxmint/mintNanny/mintNanny.py" % launcher)
+os.system("%s /usr/lib/linuxmint/mintnanny/mintnanny.py" % launcher)
 
 

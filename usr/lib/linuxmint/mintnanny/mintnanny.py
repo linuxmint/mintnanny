@@ -87,14 +87,14 @@ if not os.path.exists("/etc/hosts.mintNanny.backup"):
     os.system("cp /etc/hosts /etc/hosts.mintNanny.backup")
 
 #Set the Glade file
-gladefile = "/usr/lib/linuxmint/mintNanny/mintnanny.ui"
+gladefile = "/usr/share/linuxmint/mintnanny/mintnanny.ui"
 builder=Gtk.Builder()
 builder.add_from_file(gladefile)
 window = builder.get_object("window1")
 window.set_title(_("Domain Blocker"))
 vbox = builder.get_object("vbox_main")
 treeview_domains = builder.get_object("treeview_domains")
-window.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
+window.set_icon_name("mintnanny")
 
 # the treeview
 column1 = Gtk.TreeViewColumn(_("Blocked domains"), Gtk.CellRendererText(), text=0)
@@ -127,4 +127,3 @@ builder.get_object("toolbutton_remove").connect("clicked", remove_domain, treevi
 window.show_all()
 
 Gtk.main()
-
