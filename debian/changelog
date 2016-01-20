@@ -1,3 +1,9 @@
+mintnanny (1.5.0) sarah; urgency=medium
+
+  * Fixed www prefix and fugly dialog with GTK 3.18
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 20 Jan 2016 19:21:39 +0000
+
 mintnanny (1.4.9) sarah; urgency=medium
 
   * Get rid of the commands module
