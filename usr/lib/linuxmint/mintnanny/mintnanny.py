@@ -101,7 +101,11 @@ class MintNanny():
             dlg.destroy()
             return
 
-        for prefix in ["", "www."]:
+        prefixes = [""]
+        if len(domain.split(".")) == 2:
+            # domain in the form 'domainname.extension'
+            prefixes.append("www")
+        for prefix in prefixes:
             full_domain = "%s%s" % (prefix, domain)
             iter = self.model.insert_before(None, None)
             self.model.set_value(iter, 0, full_domain)
@@ -129,7 +133,7 @@ class MintNanny():
 
     def is_valid_domain(self, domain):
         #Quick sanity check
-        if domain == '':
+        if domain == '' or "." not in domain:
             return False
 
         # The following is based on RFC 952 (https://tools.ietf.org/html/rfc952)
