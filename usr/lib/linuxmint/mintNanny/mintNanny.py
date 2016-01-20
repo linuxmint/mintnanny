@@ -10,43 +10,15 @@
 
 import os
 import sys
-import gtk
-import gtk.glade
+from gi.repository import Gtk, Gdk
 import gettext
 import re
-import pygtk
 import subprocess
 
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 
-def open_about(widget):
-    dlg = gtk.AboutDialog()
-    dlg.set_title(_("About") + " - mintNanny")
-    output, error = subprocess.Popen(['/usr/lib/linuxmint/common/version.py', 'mintnanny'], stdout=subprocess.PIPE).communicate()
-    dlg.set_version(output)
-    dlg.set_program_name("mintNanny")
-    dlg.set_comments(_("Domain blocker"))
-    try:
-        h = open('/usr/share/common-licenses/GPL','r')
-        s = h.readlines()
-        gpl = ""
-        for line in s:
-            gpl += line
-        h.close()
-        dlg.set_license(gpl)
-    except Exception, detail:
-        print (detail)
-    dlg.set_authors(["Clement Lefebvre <root@linuxmint.com>"])
-    dlg.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
-    dlg.set_logo(gtk.gdk.pixbuf_new_from_file("/usr/lib/linuxmint/mintNanny/icon.svg"))
-    def close(w, res):
-        if res == gtk.RESPONSE_CANCEL:
-            w.hide()
-    dlg.connect("response", close)
-    dlg.show()
-
-def add_domain(widget, treeview_domains):
+def add_domain(widget, treeview_domains, window):
     output, error = subprocess.Popen(['/usr/lib/linuxmint/common/entrydialog.py', _("Please type the domain name you want to block"), _("Domain name:"), '', 'mintNanny'], stdout=subprocess.PIPE).communicate()
     domain = re.sub(r'\s', '', output)
 
@@ -57,7 +29,8 @@ def add_domain(widget, treeview_domains):
     if not is_valid_domain(domain):
         # User has passed an invalid domain (one that contains invalid characters)
         # Display an error dialog to inform them why we're not adding it to the list
-        dlg = gtk.MessageDialog(parent=None, flags=gtk.DIALOG_MODAL, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format=_("Invalid Domain"))
+        dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK, message_format=_("Invalid Domain"))
+        dlg.set_transient_for(window)
         desc1 = _("'%s' is not a valid domain name." % domain)
         desc2 = _("Domain names must start and end with a letter or a digit, and can only contain letters, digits, dots and hyphens.")
         desc3 = _("Example: my.number1domain.com")
@@ -114,15 +87,17 @@ if not os.path.exists("/etc/hosts.mintNanny.backup"):
     os.system("cp /etc/hosts /etc/hosts.mintNanny.backup")
 
 #Set the Glade file
-gladefile = "/usr/lib/linuxmint/mintNanny/mintNanny.glade"
-wTree = gtk.glade.XML(gladefile, "window1")
-wTree.get_widget("window1").set_title(_("Domain Blocker"))
-vbox = wTree.get_widget("vbox_main")
-treeview_domains = wTree.get_widget("treeview_domains")
-wTree.get_widget("window1").set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
+gladefile = "/usr/lib/linuxmint/mintNanny/mintnanny.ui"
+builder=Gtk.Builder()
+builder.add_from_file(gladefile)
+window = builder.get_object("window1")
+window.set_title(_("Domain Blocker"))
+vbox = builder.get_object("vbox_main")
+treeview_domains = builder.get_object("treeview_domains")
+window.set_icon_from_file("/usr/lib/linuxmint/mintNanny/icon.svg")
 
 # the treeview
-column1 = gtk.TreeViewColumn(_("Blocked domains"), gtk.CellRendererText(), text=0)
+column1 = Gtk.TreeViewColumn(_("Blocked domains"), Gtk.CellRendererText(), text=0)
 column1.set_sort_column_id(0)
 column1.set_resizable(True)
 treeview_domains.append_column(column1)
@@ -130,8 +105,8 @@ treeview_domains.set_headers_clickable(True)
 treeview_domains.set_reorderable(False)
 treeview_domains.show()
 
-model = gtk.TreeStore(str)
-model.set_sort_column_id( 0, gtk.SORT_ASCENDING )
+model = Gtk.TreeStore(str)
+model.set_sort_column_id( 0, Gtk.SortType.ASCENDING )
 treeview_domains.set_model(model)
 
 #Get the list of allowed domains
@@ -145,31 +120,11 @@ for line in hostsFile:
         model.set_value(iter, 0, domain)
 del model
 
-wTree.get_widget("window1").connect("delete_event", gtk.main_quit)
-wTree.get_widget("button_close").connect("clicked", gtk.main_quit)
-wTree.get_widget("toolbutton_add").connect("clicked", add_domain, treeview_domains)
-wTree.get_widget("toolbutton_remove").connect("clicked", remove_domain, treeview_domains)
+window.connect("delete_event", Gtk.main_quit)
+builder.get_object("toolbutton_add").connect("clicked", add_domain, treeview_domains, window)
+builder.get_object("toolbutton_remove").connect("clicked", remove_domain, treeview_domains)
 
-fileMenu = gtk.MenuItem(_("_File"))
-fileSubmenu = gtk.Menu()
-fileMenu.set_submenu(fileSubmenu)
-closeMenuItem = gtk.ImageMenuItem(gtk.STOCK_CLOSE)
-closeMenuItem.get_child().set_text(_("Close"))
-closeMenuItem.connect("activate", gtk.main_quit)
-fileSubmenu.append(closeMenuItem)
+window.show_all()
 
-helpMenu = gtk.MenuItem(_("_Help"))
-helpSubmenu = gtk.Menu()
-helpMenu.set_submenu(helpSubmenu)
-aboutMenuItem = gtk.ImageMenuItem(gtk.STOCK_ABOUT)
-aboutMenuItem.get_child().set_text(_("About"))
-aboutMenuItem.connect("activate", open_about)
-helpSubmenu.append(aboutMenuItem)
-
-wTree.get_widget("menubar1").append(fileMenu)
-wTree.get_widget("menubar1").append(helpMenu)
-
-wTree.get_widget("window1").show_all()
-
-gtk.main()
+Gtk.main()
 
