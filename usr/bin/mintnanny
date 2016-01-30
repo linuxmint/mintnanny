@@ -1,9 +1,7 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import os
-import commands
+import subprocess
 
-launcher = commands.getoutput("/usr/lib/linuxmint/common/mint-which-launcher.py")
+launcher = subprocess.getoutput("/usr/lib/linuxmint/common/mint-which-launcher.py")
 os.system("%s /usr/lib/linuxmint/mintnanny/mintnanny.py" % launcher)
-
-
