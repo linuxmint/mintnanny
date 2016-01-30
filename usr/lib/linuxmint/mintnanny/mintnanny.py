@@ -18,12 +18,13 @@ import fileinput
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
 
+
 class MintNanny():
 
     def __init__(self):
-        #Set the Glade file
+        # Set the Glade file
         gladefile = "/usr/share/linuxmint/mintnanny/mintnanny.ui"
-        builder=Gtk.Builder()
+        builder = Gtk.Builder()
         builder.add_from_file(gladefile)
         self.window = builder.get_object("main_window")
         self.window.set_title(_("Domain Blocker"))
@@ -42,7 +43,7 @@ class MintNanny():
         self.model.set_sort_column_id(0, Gtk.SortType.ASCENDING)
         self.treeview.set_model(self.model)
 
-        #Get the list of allowed domains
+        # Get the list of allowed domains
         with open("/etc/hosts") as f:
             for line in f:
                 if '0.0.0.0' in line or 'blocked by mintNanny' in line:
@@ -134,7 +135,7 @@ class MintNanny():
             model.remove(iter)
 
     def is_valid_domain(self, domain):
-        #Quick sanity check
+        # Quick sanity check
         if domain == '' or "." not in domain:
             return False
 
@@ -162,7 +163,7 @@ class MintNanny():
         return True
 
 if __name__ == "__main__":
-    #If no backup of /etc/hosts was made, make one
+    # If no backup of /etc/hosts was made, make one
     if not os.path.exists("/etc/hosts.mintnanny.backup"):
         os.system("cp /etc/hosts /etc/hosts.mintnanny.backup")
     MintNanny()
