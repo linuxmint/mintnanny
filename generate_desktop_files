@@ -3,7 +3,9 @@
 DOMAIN = "mintnanny"
 PATH = "/usr/share/linuxmint/locale"
 
-import os, gettext, sys
+import os
+import gettext
+import sys
 sys.path.append('/usr/lib/linuxmint/common')
 import additionalfiles
 
@@ -26,7 +28,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintNanny.desktop
 
 prefix = "[Desktop Entry]\n"
 
-suffix= """Exec=mintnanny
+suffix = """Exec=mintnanny
 Icon=mintnanny
 Terminal=false
 Type=Application
