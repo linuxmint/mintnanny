@@ -1,3 +1,12 @@
+mintnanny (1.5.1) sarah; urgency=medium
+
+  [ Daniel Alley ]
+  * removed last remnants of Python2
+  * fix out of date debian/control file
+  * formating fixes
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 19 Feb 2016 12:08:41 +0000
+
 mintnanny (1.5.0) sarah; urgency=medium
 
   * Fixed www prefix and fugly dialog with GTK 3.18
