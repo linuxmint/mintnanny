@@ -9,11 +9,18 @@
 # of the License.
 
 import os
-import sys
-from gi.repository import Gtk, Gdk
-import gettext
 import re
+import sys
+import gettext
 import fileinput
+
+try:
+    import gi
+    gi.require_version("Gtk", "3.0")
+except Exception as detail:
+    print("You do not have a recent version of GTK")
+
+from gi.repository import Gtk, Gdk
 
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
