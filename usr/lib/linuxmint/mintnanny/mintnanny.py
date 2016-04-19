@@ -13,13 +13,8 @@ import re
 import sys
 import gettext
 import fileinput
-
-try:
-    import gi
-    gi.require_version("Gtk", "3.0")
-except Exception as detail:
-    print("You do not have a recent version of GTK")
-
+import gi
+gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
 # i18n
