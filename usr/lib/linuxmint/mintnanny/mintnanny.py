@@ -9,11 +9,13 @@
 # of the License.
 
 import os
-import sys
-from gi.repository import Gtk, Gdk
-import gettext
 import re
+import sys
+import gettext
 import fileinput
+import gi
+gi.require_version("Gtk", "3.0")
+from gi.repository import Gtk, Gdk
 
 # i18n
 gettext.install("mintnanny", "/usr/share/linuxmint/locale")
