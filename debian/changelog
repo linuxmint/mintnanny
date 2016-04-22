@@ -1,3 +1,15 @@
+mintnanny (1.5.2) sarah; urgency=medium
+
+  [ Daniel Alley ]
+  * Replaced deprecated Vbox widget
+  * Added gi.require_version('3.0')
+  * Removed try/except
+
+  [ Clement Lefebvre ]
+  * Updated generated files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Fri, 22 Apr 2016 10:18:46 +0100
+
 mintnanny (1.5.1) sarah; urgency=medium
 
   [ Daniel Alley ]
