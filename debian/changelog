@@ -1,3 +1,9 @@
+mintnanny (1.5.3) sonya; urgency=medium
+
+  * Provide a hicolor icon
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 01 May 2017 19:35:07 +0100
+
 mintnanny (1.5.2) sarah; urgency=medium
 
   [ Daniel Alley ]
