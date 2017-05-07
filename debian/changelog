@@ -1,3 +1,9 @@
+mintnanny (1.5.4) sonya; urgency=medium
+
+  * l10n: Generate desktop files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 07 May 2017 13:06:46 +0100
+
 mintnanny (1.5.3) sonya; urgency=medium
 
   * Provide a hicolor icon
