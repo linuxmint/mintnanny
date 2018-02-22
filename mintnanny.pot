@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-20 17:54+0000\n"
+"POT-Creation-Date: 2018-02-22 16:18+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,46 +17,46 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:22
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:32 generate_desktop_files:27
+#: generate_desktop_files:41
+msgid "Domain Blocker"
+msgstr ""
+
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:36
+msgid "Blocked domains"
+msgstr ""
+
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:68
 msgid "Please type the domain name you want to block"
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:23
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:69
 msgid "Domain name"
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:45
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:99
 msgid "Invalid Domain"
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:47
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:101
 #, python-format
 msgid "%s is not a valid domain name."
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:48
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:102
 msgid ""
 "Domain names must start and end with a letter or a digit, and can only "
 "contain letters, digits, dots and hyphens."
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:49
+#: usr/lib/linuxmint/mintnanny/mintnanny.py:103
 msgid "Example: my.number1domain.com"
 msgstr ""
 
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:107 generate_desktop_files:25
-#: generate_desktop_files:39
-msgid "Domain Blocker"
-msgstr ""
-
-#: usr/lib/linuxmint/mintnanny/mintnanny.py:113
-msgid "Blocked domains"
-msgstr ""
-
-#: generate_desktop_files:25 generate_desktop_files:39
+#: generate_desktop_files:27 generate_desktop_files:41
 msgid "Block access to selected domain names"
 msgstr ""
 
-#: generate_desktop_files:39
+#: generate_desktop_files:41
 msgid "Parental Control"
 msgstr ""

@@ -14,7 +14,7 @@ gettext.install(DOMAIN, PATH)
 
 prefix = "[Desktop Entry]\n"
 
-suffix = """Exec=mintnanny
+suffix = """Exec=pkexec mintnanny
 Icon=mintnanny
 Terminal=false
 Type=Application
@@ -28,7 +28,7 @@ additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/mintNanny.desktop
 
 prefix = "[Desktop Entry]\n"
 
-suffix = """Exec=mintnanny
+suffix = """Exec=pkexec mintnanny
 Icon=mintnanny
 Terminal=false
 Type=Application

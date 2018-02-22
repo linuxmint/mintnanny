@@ -2,6 +2,10 @@
 
 import os
 import subprocess
+import sys
 
-launcher = subprocess.getoutput("/usr/lib/linuxmint/common/mint-which-launcher.py")
-os.system("%s /usr/lib/linuxmint/mintnanny/mintnanny.py" % launcher)
+if os.getuid() != 0:
+	print("mintnanny needs to be run as root.")
+	sys.exit(1)
+
+subprocess.Popen("/usr/lib/linuxmint/mintnanny/mintnanny.py")
