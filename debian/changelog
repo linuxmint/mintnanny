@@ -1,3 +1,13 @@
+mintnanny (1.5.5) tara; urgency=medium
+
+  [ dg1727 ]
+  * Added pkexec support
+
+  [ Clement Lefebvre ]
+  * Fix makepot, remove msgids from polkit policy, move pkexec to launchers
+
+ -- Clement Lefebvre <root@linuxmint.com>  Mon, 07 May 2018 12:30:10 +0100
+
 mintnanny (1.5.4) sonya; urgency=medium
 
   * l10n: Generate desktop files
