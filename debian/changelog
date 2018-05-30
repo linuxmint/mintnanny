@@ -1,3 +1,9 @@
+mintnanny (1.5.6) tara; urgency=medium
+
+  * Add msg to polkit policy
+
+ -- Clement Lefebvre <root@linuxmint.com>  Wed, 30 May 2018 18:33:02 +0100
+
 mintnanny (1.5.5) tara; urgency=medium
 
   [ dg1727 ]
