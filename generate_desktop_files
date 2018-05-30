@@ -39,3 +39,31 @@ OnlyShowIn=KDE;
 """
 
 additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/mintNanny.desktop", prefix, _("Domain Blocker"), _("Block access to selected domain names"), suffix, genericName=_("Parental Control"))
+
+prefix = """<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC
+ "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+
+  <vendor>Linux Mint</vendor>
+  <vendor_url>https://linuxmint.com/</vendor_url>
+
+  <action id="com.linuxmint.mintnanny">
+    <icon_name>mintnanny</icon_name>
+"""
+
+suffix = """
+    <defaults>
+      <allow_any>no</allow_any>
+      <allow_inactive>no</allow_inactive>
+      <allow_active>auth_admin_keep</allow_active>
+    </defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/bin/mintnanny</annotate>
+    <annotate key="org.freedesktop.policykit.exec.allow_gui">true</annotate>
+  </action>
+
+</policyconfig>
+"""
+
+additionalfiles.generate_polkit_policy(DOMAIN, PATH, "usr/share/polkit-1/actions/com.linuxmint.mintnanny.policy", prefix, _("Domain Blocker"), suffix)
