@@ -15,7 +15,7 @@
 <message xml:lang="ar">مانع النطاق</message>
 <message xml:lang="as">ড'মেইন ব্লকাৰ</message>
 <message xml:lang="ast">Torgador de dominiu</message>
-<message xml:lang="az">Domen Әngәllәyici</message>
+<message xml:lang="az">Alan Əngəlləyici</message>
 <message xml:lang="be">Блакавальнік даменаў</message>
 <message xml:lang="bg">Приложение за блокиране на домейни</message>
 <message xml:lang="bn">ডোমেইন ব্লকার</message>
@@ -28,7 +28,7 @@
 <message xml:lang="da">Domæneblokering</message>
 <message xml:lang="de">Domänensperre</message>
 <message xml:lang="el">Μπλοκάρισμα Τομέα</message>
-<message xml:lang="eo">Retregionblokilo</message>
+<message xml:lang="eo">Domajnblokilo</message>
 <message xml:lang="es">Bloqueador de dominios</message>
 <message xml:lang="et">Domeenide blokeerija</message>
 <message xml:lang="eu">Domeinu Blokeatzailea</message>
@@ -58,6 +58,7 @@
 <message xml:lang="ka">დომენის ბლოკერი</message>
 <message xml:lang="kab">Amsewḥal n taɣult</message>
 <message xml:lang="kk">Домендер бөгеттеуші</message>
+<message xml:lang="km">កម្មវិធីទប់ស្កាត់ដែន</message>
 <message xml:lang="kn">ಡೊಮೈನ್ ನಿರ್ಬಂಧಕ</message>
 <message xml:lang="ko">도메인 차단기</message>
 <message xml:lang="ksw">t'raw hka domain</message>
@@ -91,6 +92,7 @@
 <message xml:lang="ro">Blocare domenii</message>
 <message xml:lang="ru">Блокировщик доменов</message>
 <message xml:lang="rue">Блокатор доменів</message>
+<message xml:lang="sc">Blocadore de domìnios</message>
 <message xml:lang="sco">Domaine Blocker</message>
 <message xml:lang="si">අඩවි අවහිර කිරීම</message>
 <message xml:lang="sk">Blokovanie Domén</message>
@@ -106,6 +108,7 @@
 <message xml:lang="th">โปรแกรมบล็อกโดเมน</message>
 <message xml:lang="tl">Tagaharang ng Domain</message>
 <message xml:lang="tr">Alan Adı Engelleyici</message>
+<message xml:lang="tt">Доменнар бикләгече</message>
 <message xml:lang="uk">Блокувальник доменів</message>
 <message xml:lang="ur">ڈومین بلاکر</message>
 <message xml:lang="uz">Доменни тўсгич</message>
