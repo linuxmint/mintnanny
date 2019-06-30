@@ -1,3 +1,9 @@
+mintnanny (1.5.7) tina; urgency=medium
+
+  * Fix generate_desktop_files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Sun, 30 Jun 2019 15:52:27 +0200
+
 mintnanny (1.5.6) tara; urgency=medium
 
   * Add msg to polkit policy
