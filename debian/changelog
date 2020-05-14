@@ -1,3 +1,9 @@
+mintnanny (1.5.8) ulyana; urgency=medium
+
+  * l10n: Generate files
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 14 May 2020 08:19:39 +0100
+
 mintnanny (1.5.7) tina; urgency=medium
 
   * Fix generate_desktop_files
