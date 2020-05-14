@@ -28,7 +28,7 @@
 <message xml:lang="da">Domæneblokering</message>
 <message xml:lang="de">Domänensperre</message>
 <message xml:lang="el">Μπλοκάρισμα Τομέα</message>
-<message xml:lang="eo">Domajnblokilo</message>
+<message xml:lang="eo">Domajna blokilo</message>
 <message xml:lang="es">Bloqueador de dominios</message>
 <message xml:lang="et">Domeenide blokeerija</message>
 <message xml:lang="eu">Domeinu Blokeatzailea</message>
@@ -69,6 +69,7 @@
 <message xml:lang="lo">ຕົວບຣອກໂດເມນ</message>
 <message xml:lang="lt">Interneto sričių (domenų) blokavimo programa</message>
 <message xml:lang="lv">Domēnu bloķētājs</message>
+<message xml:lang="mai">डोमेन अवरोधक</message>
 <message xml:lang="mg">Mpisakana anaram-bala</message>
 <message xml:lang="mhr">Домен-влакым тӱкылтыш</message>
 <message xml:lang="mk">Домен блокер</message>
@@ -88,7 +89,6 @@
 <message xml:lang="pl">Blokowanie domen</message>
 <message xml:lang="pt">Bloqueador de domínios</message>
 <message xml:lang="pt_BR">Bloqueador de domínios (controle dos pais)</message>
-<message xml:lang="pt_PT">Bloqueador de domínios</message>
 <message xml:lang="ro">Blocare domenii</message>
 <message xml:lang="ru">Блокировщик доменов</message>
 <message xml:lang="rue">Блокатор доменів</message>
@@ -102,7 +102,7 @@
 <message xml:lang="sr">Блокирање домена</message>
 <message xml:lang="sr@latin">Blokiranje domena</message>
 <message xml:lang="sv">Domänblockerare</message>
-<message xml:lang="ta">களத் தடுப்பான்</message>
+<message xml:lang="ta">வலைய நிர்வாக முடப்பான்</message>
 <message xml:lang="te">డొమైన్ నిషేధం</message>
 <message xml:lang="tg">Манъкунандаи доменҳо</message>
 <message xml:lang="th">โปรแกรมบล็อกโดเมน</message>
