@@ -152,6 +152,12 @@ class MintNanny():
         if not regex.match(domain):
             return False
 
+        #Enforces label size of 63 characters or less
+        tokens = domain.split('.')
+        for token in tokens:
+            if len(token) > 63:
+                return False
+
         # A domain name MUST end with an alphanumeric character
         # At this point we're certain that the string only contains alphanumeric characters or hyphens and dots.
         # So we just need to check that it doesn't end with a hyphen or a dot
