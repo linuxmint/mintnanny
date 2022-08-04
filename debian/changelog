@@ -1,3 +1,9 @@
+mintnanny (1.6.0) vanessa; urgency=medium
+
+  * Bump rebuild without ZST
+
+ -- Clement Lefebvre <root@linuxmint.com>  Thu, 04 Aug 2022 11:54:26 +0200
+
 mintnanny (1.5.9) vanessa; urgency=medium
 
   [ Redecoffee ]
