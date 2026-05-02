@@ -110,6 +110,16 @@ class MintNanny():
         if len(domain.split(".")) == 2:
             # domain in the form 'domainname.extension'
             prefixes.append("www.")
+
+        already_blocked = ["%s%s" % (p, domain) for p in prefixes if self.is_domain_blocked("%s%s" % (p, domain))]
+        if already_blocked:
+            dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK, message_format=_("Already Blocked"))
+            dlg.set_transient_for(self.window)
+            dlg.format_secondary_text(_("%s is already being blocked.") % already_blocked[0])
+            dlg.run()
+            dlg.destroy()
+            return
+
         for prefix in prefixes:
             full_domain = "%s%s" % (prefix, domain)
             iter = self.model.insert_before(None, None)
@@ -135,6 +145,14 @@ class MintNanny():
                 if not found:
                     sys.stdout.write(line)
             model.remove(iter)
+
+    def is_domain_blocked(self, domain):
+        model_iter = self.model.get_iter_first()
+        while model_iter is not None:
+            if self.model.get_value(model_iter, 0) == domain:
+                return True
+            model_iter = self.model.iter_next(model_iter)
+        return False
 
     def is_valid_domain(self, domain):
         # Quick sanity check
