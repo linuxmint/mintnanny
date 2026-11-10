@@ -98,7 +98,7 @@ class MintNanny():
             # Display an error dialog to inform them why we're not adding it to the list
             dlg = Gtk.MessageDialog(type=Gtk.MessageType.ERROR, buttons=Gtk.ButtonsType.OK, message_format=_("Invalid Domain"))
             dlg.set_transient_for(self.window)
-            desc1 = _("%s is not a valid domain name." % domain)
+            desc1 = _("%s is not a valid domain name.") % domain
             desc2 = _("Domain names must start and end with a letter or a digit, and can only contain letters, digits, dots and hyphens.")
             desc3 = _("Example: my.number1domain.com")
             dlg.format_secondary_text("%s\n\n%s\n\n%s" % (desc1, desc2, desc3))
